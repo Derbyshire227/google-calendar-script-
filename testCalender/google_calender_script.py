@@ -47,9 +47,14 @@ def block_calendar_days(date_ranges, calendar_ids=None):
             }
 
             # creates the event
+            
             event = service.events().insert(calendarId=calendar_id, body=event).execute()
 
-            print(f'Event created on {calendar_id}: {event.get("htmlLink")}')
+            if 'htmlLink' in event:
+                 print(f'Event created on {calendar_id}: {event.get("htmlLink")} ') 
+            else:
+                print(f'Event could not be created, please try again.')
+                break
 
 if __name__ == '__main__':
     # bank holidays days below:
@@ -63,7 +68,7 @@ if __name__ == '__main__':
         ('2024-12-25', '2024-12-26'),
     ]
 
-    # enter calender ids below - primary can be removed but must be replaced. 
+    # enter calender ids below - primary can be removed but must be replaced - if primary is not below, can be entered like so 'primary'
     calendar_ids = ['84339d5b5f2c6d43a43b37bc997df758fe6fc60596298b64c25bb2ccf6db5c18@group.calendar.google.com','623f9fc8f7ab15844644ba0041cceb8c0a93e1525e8208d405f62f9947b5a6ff@group.calendar.google.com'] 
 
     block_calendar_days(date_ranges, calendar_ids)
