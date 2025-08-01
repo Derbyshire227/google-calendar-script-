@@ -59,7 +59,7 @@ def block_calendar_days(date_ranges, calendar_ids=None):
 if __name__ == '__main__':
     # bank holidays days below:
     # end date should be same date unless blocked needs to span over mutliple dates - this is due to the time set in event above. 
-    date_ranges = [
+    date_ranges = [  # make sure to update dates depending on year of use 
         ('2024-03-29', '2024-03-29'),
         ('2024-04-01', '2024-04-01'),
         ('2024-05-06', '2024-05-06'),
